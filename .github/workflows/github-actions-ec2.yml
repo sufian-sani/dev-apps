@@ -42,4 +42,4 @@ jobs:
             # python manage.py collectstatic --noinput
             # python manage.py runserver 0.0.0.0:8000
             pkill gunicorn || true
-            gunicorn edenthought.wsgi:application --bind 0.0.0.0:8000 --daemon
+            gunicorn edenthought.wsgi:application --bind 127.0.0.1:8000 --daemon
