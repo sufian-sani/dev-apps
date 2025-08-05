@@ -29,6 +29,8 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
+            # Stop any existing Django process on port 8000
+            fuser -k 8000/tcp || true
             cd ${{ secrets.TARGET_DIR }}
             # Create virtual environment (only if it doesn't exist)
             if [ ! -d "venv" ]; then
