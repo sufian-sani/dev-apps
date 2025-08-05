@@ -30,6 +30,10 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd ${{ secrets.TARGET_DIR }}
+            # Create virtual environment (only if it doesn't exist)
+            if [ ! -d "venv" ]; then
+              python3 -m venv venv
+            fi
             source venv/bin/activate
             pip install -r requirements.txt
             python manage.py migrate
